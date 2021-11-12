@@ -1,11 +1,10 @@
-// TODO: Include packages needed for this application
-const inquirer = require('inquirer');
+// Imported required packages
 const fs = require('fs');
-const util = require('util');
+const path = require('path');
+const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
-// TODO: Create an array of questions for user input
 
-// Questions
+// Array of questions for user input
 const questions = [
   {
     type: "input",
@@ -26,7 +25,7 @@ const questions = [
   {
     type: "input",
     name: "description",
-    message: "What is your project description",
+    message: "What is your project description?",
   },
   {
     type: "input",
@@ -59,22 +58,13 @@ const questions = [
     message: "What is your email?",
   },
 ];
-  
-//   .then((answers) => {
-//     const htmlPageContent = generateHTML(answers);
 
-//     fs.writeFile('index.html', htmlPageContent, (err) =>
-//       err ? console.log(err) : console.log('Successfully created index.html!')
-//     );
-//   });
-// ];
-
-// TODO: Create a function to write README file
+// Function to write README file using the user input
 function writeToFile(fileName, data) {
   return fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
 
-// TODO: Create a function to initialize app
+// Function to initialize app
 function init() {
   inquirer.prompt(questions).then((inquirerResponses) => {
     console.log('Generating README...');
@@ -82,5 +72,5 @@ function init() {
   });
 }
 
-// Function call to initialize app
 init();
+
